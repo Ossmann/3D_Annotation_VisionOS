@@ -115,6 +115,10 @@ final class ViewModel {
     private var terrainMaterial: ShaderGraphMaterial? {
        rootEntity?.terrain?.shaderGraphMaterial
     }
+    
+    func resetAudio() {
+        audioControllers = [Region: AudioPlaybackController]()
+    }
 
     func updateTerrainMaterial() {
         guard let terrain = rootEntity?.terrain,

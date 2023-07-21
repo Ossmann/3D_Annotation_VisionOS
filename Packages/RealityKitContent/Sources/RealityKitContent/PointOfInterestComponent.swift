@@ -45,11 +45,11 @@ public struct PointOfInterestComponent: Component, Codable {
 
     public var name: String = "Learn More"
     
-    public var description: String?
+    public var description: String? = nil
     
-    public var mainImageName: String?
-    public var secondImageName: String?
-    public var thirdImageName: String?
+    public var mainImageName: String? = nil
+    public var secondImageName: String? = nil
+    public var thirdImageName: String? = nil
     
     public var imageNames: [String] {
         [mainImageName, secondImageName, thirdImageName].compactMap({ $0 })

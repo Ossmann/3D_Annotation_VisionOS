@@ -25,7 +25,7 @@ struct DioramaView: View {
         
         RealityView { content, _ in
             do {
-                let entity = try await Entity.load(named: "DioramaAssembled", in: RealityKitContent.RealityKitContentBundle)
+                let entity = try await Entity(named: "DioramaAssembled", in: RealityKitContent.RealityKitContentBundle)
                 viewModel.rootEntity = entity
                 content.add(entity)
                 viewModel.updateScale()

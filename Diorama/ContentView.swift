@@ -31,6 +31,7 @@ struct ContentView: View {
                 .onChange(of: viewModel.showImmersiveContent) {
                     Task {
                         if viewModel.showImmersiveContent {
+                            viewModel.resetAudio()
                             await openImmersiveSpace(id: spaceId)
                         } else {
                             await dismissImmersiveSpace()

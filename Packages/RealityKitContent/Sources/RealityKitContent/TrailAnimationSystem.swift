@@ -55,7 +55,7 @@ extension TimeInterval {
         TrailAnimationSystem.registerSystem()
         RealityKitContent.TrailComponent.registerComponent()
         
-        if let root = try? await Entity.load(named: "TrailPath_Export/TrailPath_Export.usdc", in: RealityKitContentBundle) {
+        if let root = try? await Entity(named: "TrailPath_Export/TrailPath_Export.usdc", in: RealityKitContentBundle) {
             content.add(root)
             root.findEntity(named: "Catalina_TrailA")?.components.set(TrailComponent())
             
