@@ -105,11 +105,12 @@ struct ImagesView: View {
             content.add(entity)
         }
     } attachments: {
-        LearnMoreView(name: "Phoenix Lake",
-                      description: "Lake · Northern California",
-                      imageNames: ["Landscape_2_Sunset"],
-                      trail: nil,
-                      viewModel: ViewModel())
-        .tag("z")
+        Attachment(id: "z") {
+            LearnMoreView(name: "Phoenix Lake",
+                          description: "Lake · Northern California",
+                          imageNames: ["Landscape_2_Sunset"],
+                          trail: nil,
+                          viewModel: ViewModel())
+        }
     }
 }

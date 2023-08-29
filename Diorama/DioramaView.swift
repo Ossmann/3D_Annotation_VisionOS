@@ -89,9 +89,10 @@ struct DioramaView: View {
             viewModel.updateTerrainMaterial()
 
         } attachments: {
-            
             ForEach(attachmentsProvider.sortedTagViewPairs, id: \.tag) { pair in
-                pair.view
+                Attachment(id: pair.tag) {
+                    pair.view
+                }
             }
         }
     }
