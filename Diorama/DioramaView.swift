@@ -71,7 +71,9 @@ struct DioramaView: View {
 
                 // Get the entity from the collection of attachments keyed by tag.
                 guard let attachmentEntity = attachments.entity(for: component.attachmentTag) else { return }
-                
+
+                guard attachmentEntity.parent == nil else { return }
+
                 // Attachments are region-specific. They react when the slider changes from one map to the other.
                 // Take the region configured in Reality Composer Pro and give it to the corresponding attachment
                 // entity. These entities also need OpacityComponents so they can fade in and out as the map changes
@@ -79,10 +81,14 @@ struct DioramaView: View {
                     attachmentEntity.components.set(RegionSpecificComponent(region: pointOfInterestComponent.region))
                     attachmentEntity.components.set(OpacityComponent(opacity: 0))
                 }
-                
-                viewModel.rootEntity?.addChild(attachmentEntity)
-                attachmentEntity.setPosition([0, 0.2, 0], relativeTo: entity)
+
+                // Have all the Point Of Interest attachments always face the camera by giving them a BillboardComponent.
                 attachmentEntity.components.set(BillboardComponent())
+
+                // SwiftUI calculates an attachment view's expanded size using the top center as the pivot point. This
+                // raises the views so they aren't sunk into the terrain in their initial collapsed state.
+                entity.addChild(attachmentEntity)
+                attachmentEntity.setPosition([0.0, 0.4, 0.0], relativeTo: entity)
             }
             
             viewModel.updateRegionSpecificOpacity()

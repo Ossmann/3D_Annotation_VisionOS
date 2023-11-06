@@ -416,6 +416,7 @@ def Xform "Root"
 
         def RealityKitCustomComponent "RealityKitContent_PointOfInterestComponent"
         {
+            string description = ""
             uniform token info:id = "RealityKitContent.PointOfInterestComponent"
             string mainImageName = "Landscape_29_Tropical_Sunset_Boat"
             string name = "Two Harbors"
@@ -493,6 +494,7 @@ def Xform "Root"
 
         def RealityKitCustomComponent "RealityKitContent_PointOfInterestComponent"
         {
+            string description = ""
             uniform token info:id = "RealityKitContent.PointOfInterestComponent"
             string mainImageName = "Landscape_33_Trees_Rocks"
             string name = "Parsons Landing"
@@ -563,11 +565,13 @@ def Xform "Root"
 
         def RealityKitCustomComponent "RealityKitContent_PointOfInterestComponent"
         {
+            string description = ""
             uniform token info:id = "RealityKitContent.PointOfInterestComponent"
             string mainImageName = "Landscape_22_Sailboats"
             string name = "Ribbon Beach"
             token region = "catalina"
             string secondImageName = "Landscape_25_Tropical_Sunset_Palms"
+            string thirdImageName = ""
         }
     }
 
@@ -583,7 +587,10 @@ def Xform "Root"
         {
             string description = "A prominent rock formation comprising of many cliffs and pinnacles. The three major summits tower over 2,000 feet high above Yosemite Valley."
             uniform token info:id = "RealityKitContent.PointOfInterestComponent"
+            string mainImageName = ""
             string name = "Cathedral Rocks"
+            string secondImageName = ""
+            string thirdImageName = ""
         }
 
         def Mesh "Yosemite_TrailB" (
@@ -651,7 +658,10 @@ def Xform "Root"
         {
             string description = "A popular destination for rock climbers, this formation is composed almost entirely of granite and is approximately 100 million years old."
             uniform token info:id = "RealityKitContent.PointOfInterestComponent"
+            string mainImageName = ""
             string name = "El Capitan"
+            string secondImageName = ""
+            string thirdImageName = ""
         }
 
         def Mesh "Yosemite_TrailA" (
@@ -719,7 +729,9 @@ def Xform "Root"
         {
             string description = "A 145-mile river that flows through Yosemite Valey, beginning in the Sierra Nevada and ending in the San Joaquin River."
             uniform token info:id = "RealityKitContent.PointOfInterestComponent"
+            string mainImageName = ""
             string name = "Merced River"
+            string secondImageName = ""
         }
     }
 
