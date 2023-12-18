@@ -59,7 +59,7 @@
 				3BC31426B82BAF8846183540 /* LICENSE.txt */,
 			);
 			name = LICENSE;
-			path = LICENSE;
+			path = .;
 			sourceTree = "<group>";
 		};
 		1612F8572A09BBC1005AE826 /* Frameworks */ = {

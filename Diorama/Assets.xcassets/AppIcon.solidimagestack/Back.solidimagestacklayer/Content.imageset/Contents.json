@@ -1,8 +1,8 @@
 {
   "images" : [
     {
-      "filename" : "diorama-icon-bottom.png",
-      "idiom" : "reality",
+      "filename" : "AppIcon.png",
+      "idiom" : "vision",
       "scale" : "2x"
     }
   ],
