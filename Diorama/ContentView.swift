@@ -26,7 +26,7 @@ struct ContentView: View {
             Spacer()
             Grid(alignment: .leading, verticalSpacing: 30) {
                 Toggle(isOn: $viewModel.showImmersiveContent) {
-                    Text("Show Diorama")
+                    Text("Show Exhibit")
                 }
                 .onChange(of: viewModel.showImmersiveContent) {
                     Task {
@@ -39,21 +39,21 @@ struct ContentView: View {
                     }
                 }
                 
-                GridRow {
-                    Text("Morph")
-                    Slider(value: $viewModel.sliderValue, in: (0.0)...(1.0))
-                        .onChange(of: viewModel.sliderValue) { _, _ in
-                            update()
-                        }
-                        .onAppear {
-                            if let value = viewModel.terrainMaterialValue {
-                                viewModel.sliderValue = value
-                            }
-                            update()
-                        }
-                }
-                .disabled(!areControlsShowing)
-                .opacity(areControlsShowing ? 1 : 0.5)
+//                GridRow {
+//                    Text("Morph")
+//                    Slider(value: $viewModel.sliderValue, in: (0.0)...(1.0))
+//                        .onChange(of: viewModel.sliderValue) { _, _ in
+//                            update()
+//                        }
+//                        .onAppear {
+//                            if let value = viewModel.terrainMaterialValue {
+//                                viewModel.sliderValue = value
+//                            }
+//                            update()
+//                        }
+//                }
+//                .disabled(!areControlsShowing)
+//                .opacity(areControlsShowing ? 1 : 0.5)
 
                 GridRow {
                     Text("Scale")

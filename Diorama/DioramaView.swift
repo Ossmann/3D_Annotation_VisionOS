@@ -33,27 +33,10 @@ struct DioramaView: View {
                 // Offset the scene so it doesn't appear underneath the user or conflict with the main window.
                 entity.position = SIMD3<Float>(0, 0, -2)
                 
-                setupBirds(rootEntity: entity)
-
                 subscriptions.append(content.subscribe(to: ComponentEvents.DidAdd.self, componentType: PointOfInterestComponent.self, { event in
                     createLearnMoreView(for: event.entity)
                 }))
 
-                subscriptions.append(content.subscribe(to: ComponentEvents.DidAdd.self, componentType: TrailComponent.self, { event in
-
-                    let trail = event.entity
-
-                    if let parentRegion = trail.parent?.components[PointOfInterestComponent.self] {
-                        trail.components.set(RegionSpecificComponent(region: parentRegion.region))
-                    }
-
-                    // Trail entities need a TrailOpacityComponents so they can fade in and out.
-                    trail.components.set(ControlledOpacityComponent(shouldShow: false))
-
-                    trail.components.set(OpacityComponent(opacity: 0.0))
-
-                    viewModel.updateRegionSpecificOpacity()
-                }))
 
             } catch {
                 print("Error in RealityView's make: \(error)")
@@ -111,15 +94,12 @@ struct DioramaView: View {
         // Get this entity's PointOfInterestComponent, which is in the Reality Composer Pro project.
         guard let pointOfInterest = entity.components[PointOfInterestComponent.self] else { return }
         
-        // Highlight the trail entity associated with this location marker entity.
-        let trailEntity: Entity? = entity.children.first(where: { $0.hasMaterialParameter(named: TrailAnimationSystem.materialParameterName) })
         
         let tag: ObjectIdentifier = entity.id
         
         let view = LearnMoreView(name: pointOfInterest.name,
                                  description: pointOfInterest.description ?? "",
                                  imageNames: pointOfInterest.imageNames,
-                                 trail: trailEntity,
                                  viewModel: viewModel)
             .tag(tag)
         
@@ -128,16 +108,6 @@ struct DioramaView: View {
         attachmentsProvider.attachments[tag] = AnyView(view)
     }
     
-    private func setupBirds(rootEntity entity: Entity) {
-        guard let birds = entity.findEntity(named: "Birds") else { return }
-        for bird in birds.children {
-            bird.components[FlockingComponent.self] = FlockingComponent()
-
-            guard let animationResource = bird.availableAnimations.first else { continue }
-            let controller = bird.playAnimation(animationResource.repeat())
-            controller.speed = Float.random(in: 1..<2.5)
-        }
-    }
 }
 
 #Preview {

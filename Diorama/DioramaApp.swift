@@ -20,16 +20,12 @@ struct DioramaApp: App {
     init() {
         RealityKitContent.PointOfInterestComponent.registerComponent()
         PointOfInterestRuntimeComponent.registerComponent()
-        RealityKitContent.TrailComponent.registerComponent()
         RealityKitContent.BillboardComponent.registerComponent()
         ControlledOpacityComponent.registerComponent()
         RealityKitContent.RegionSpecificComponent.registerComponent()
         
         RealityKitContent.BillboardSystem.registerSystem()
-        RealityKitContent.TrailAnimationSystem.registerSystem()
 
-        FlockingComponent.registerComponent()
-        FlockingSystem.registerSystem()
     }
     
     var body: some SwiftUI.Scene {

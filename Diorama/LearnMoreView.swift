@@ -14,7 +14,6 @@ public struct LearnMoreView: View {
     let name: String
     let description: String
     let imageNames: [String]
-    let trail: Entity?
     
     let viewModel: ViewModel
     
@@ -69,10 +68,6 @@ public struct LearnMoreView: View {
                 withAnimation(.spring) {
                     showingMoreInfo.toggle()
                     
-                    if var trailOpacity = trail?.components[ControlledOpacityComponent.self] {
-                        trailOpacity.shouldShow = showingMoreInfo
-                        trail?.components.set(trailOpacity)
-                    }
                     
                     viewModel.updateRegionSpecificOpacity()
                 }
@@ -109,7 +104,6 @@ struct ImagesView: View {
             LearnMoreView(name: "Phoenix Lake",
                           description: "Lake · Northern California",
                           imageNames: ["Landscape_2_Sunset"],
-                          trail: nil,
                           viewModel: ViewModel())
         }
     }
